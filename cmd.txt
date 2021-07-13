@@ -1,11 +1,29 @@
+
+Network Create
+===============
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')
 
 kubectl get pods
 kubectl get pods --all-namespaces
 
+Pods:
+====
 kubectl get nodes
-kubectl apply -f *.yml
-kubectl describe pods/rc/rs/svc/deploy
+kubectl apply -f filename.yml
+kubectl get pods
 kubectl get pods -o wide
+kubectl get name-of-app -o yaml
+kubectl describe pods name-of-app
 kubectl get pods/podname
-kubectl delete -f *.yml
+kubectl delete -f filename.yml
+
+ReplicationController
+=====================
+kubectl apply/create -f filename  
+kubectl get pods
+kubectl get pods/po -l app=name-of-app
+kubectl describe rc name-of-app
+kubectl get po/pods -o wide
+kubectl scale rc name-of-app --replica=4
+kubectl get rc name-of-app
+kubectl delete -f filename
