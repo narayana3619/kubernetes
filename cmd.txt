@@ -5,7 +5,7 @@ kubectl get pods --all-namespaces
 
 kubectl get nodes
 kubectl apply -f *.yml
-kubectl describe pods
+kubectl describe pods/rc/rs/svc/deploy
 kubectl get pods -o wide
 kubectl get pods/podname
 kubectl delete -f *.yml
