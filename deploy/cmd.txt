@@ -1,0 +1,17 @@
+Deploy
+======
+kubectl apply/create -f filename.yml
+kubectl get deploy
+kubectl get deploy -l app=name-of-app
+kubectl get rs -l app=name-of-app
+kubectl get po/pods -l app=name-of-app
+kubectl describe deploy name-of-app
+kubectl set image deploy name-of-app containername=version
+kubectl edit deploy name-of-app
+kubectl rollouut status deployment/name-of-app
+kubectl set image deploy name-of-app containername=version --record
+kubectl rollouut status deployment/name-of-app
+kubectl rollouut history deployment/name-of-app
+kubectl rollouut undo deployment/name-of-app
+kubectl rollouut status deployment/name-of-app
+kubectl delete -f filename.yml
