@@ -1,0 +1,10 @@
+ReplicaSet
+==========
+kubectl apply/create -f filename
+kubectl get pods
+kubectl get pods/po -l tire=frontend
+kubectl get rs name-of-app -o wide
+kubectl describe rs name-of-app
+kubectl get po/pods -o wide
+kubectl scale rc name-of-app --replicas=4
+kubectl delete -f filename.yml

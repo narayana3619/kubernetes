@@ -1,0 +1,10 @@
+ReplicationController
+=====================
+kubectl apply/create -f filename  
+kubectl get pods
+kubectl get pods/po -l app=name-of-app
+kubectl describe rc name-of-app
+kubectl get po/pods -o wide
+kubectl scale rc name-of-app --replicas=4
+kubectl get rc name-of-app
+kubectl delete -f filename.yml

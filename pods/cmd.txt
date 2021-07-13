@@ -1,0 +1,10 @@
+Pods
+====
+kubectl get nodes
+kubectl apply/create -f filename.yml
+kubectl get pods
+kubectl get pods -o wide
+kubectl get name-of-app -o yaml
+kubectl describe pods name-of-app
+kubectl get pods/podname
+kubectl delete -f filename.yml
