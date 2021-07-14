@@ -1,2 +1,0 @@
-# kubernetes
-Kubernets repo
