@@ -1,0 +1,47 @@
+#this replicaset yml file for jenkins
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: jenkins-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jenkins-rs
+
+  template:
+    metadata:
+      name: jenkins-pod
+      labels:
+        app: jenkins-rs
+
+    spec:
+      containers:
+        - image: jenkins/jenkins
+          name: jenkins-cotainer
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /cache
+              name: cache-volume
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
+
+#this service for jenkins replicaset
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenginx-svc
+  labels:
+    app: jenkins-rs
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: jenkins-rs
+
