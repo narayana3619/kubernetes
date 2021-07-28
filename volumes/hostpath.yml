@@ -1,0 +1,47 @@
+#this replicaset yml file for jenkins
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: httpd-rs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpd-rs
+
+  template:
+    metadata:
+      name: httpd-pod
+      labels:
+        app: httpd-rs
+
+    spec:
+      containers:
+        - image: httpd
+          name: httpd-cotainer
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - mountPath: "/usr/local/apache2/htdocs/"
+            name: mydir
+      volumes:
+      - name: mydir
+        hostPath:
+          path: "/home/ec2-user/swamy/"
+
+#this service for jenkins replicaset
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-svc
+  labels:
+    app: httpd-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: httpd-rs
