@@ -1,0 +1,15 @@
+sudo yum install nfs-utils -y ---> to install nfs server
+
+sudo mkdir test ---> to create one folder
+
+sudo chmod -R 777 test ---> to change mod of folder
+
+sudo chown nfsnobody:nfsnobody test ---> to change ownership of folder
+
+sudo vi /etc/exports
+
+/home/ec2-user/test     172.31.0.0/16(rw,sync,no_root_squash,no_all_squash)
+
+
+sudo exportfs -a
+sudo systemctl restart nfs-server
